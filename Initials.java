@@ -14,7 +14,7 @@ public class Initials extends JPanel{
 	public Point[] points;// = getPoints(pointCount);
 	
 	public Initials() {
-		JFrame jf = new JFrame("Кривые Безье");
+		JFrame jf = new JFrame("ГЉГ°ГЁГўГ»ГҐ ГЃГҐГ§ГјГҐ");
 		jf.setSize(800, 800);
 		jf.setResizable(false);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,15 +23,13 @@ public class Initials extends JPanel{
   
   	}
 	
-	// что рисовать на панели
 	@Override
 	public void paintComponent(Graphics g) {
-		super.paintComponent(g); // очистка экрана
+		super.paintComponent(g); 
 		g.setColor(Color.green.darker());
 		drawInitials(g);
 	}
 
-	// Рисует инициалы
 	private void drawInitials(Graphics g) {
 		setControlPointA1();
 		drawScence(g);
@@ -43,7 +41,6 @@ public class Initials extends JPanel{
 		drawScence(g);
 	}
 	
-	// Прорисовка одной буквы
 	private void drawScence(Graphics g) {
 		g.setColor(Color.green.darker());
         
@@ -54,10 +51,8 @@ public class Initials extends JPanel{
             bezierGoGo(points, g);
         }
     };
-    
-    //Прорисовка одного сегмента кривой по четырем контрольным точкам
+   
     private void bezierGoGo(Point[] sourcePoints, Graphics g){
-        // ф-ия расчитывает финальный набор точек, по которым будет строится кривуля, а затем рисует ее
         ArrayList<Point> finalPoints = new ArrayList<>();
  
         for (float t=0; t<=1; t += 0.01)
@@ -66,7 +61,6 @@ public class Initials extends JPanel{
         drawCurve(finalPoints, g);
     }
    
-    // Прорисовка маленьких отрезочков
     private void drawCurve(ArrayList<Point> finalPoints, Graphics g){
         for (int i = 1; i < finalPoints.size(); i++)
         {
@@ -78,7 +72,6 @@ public class Initials extends JPanel{
         }
     }
     
-    // Извлечение из массива контрольных точек 4-х точек для одного сегмента
     private  Point[] getPoints(int index) {
     	int n = index * 3;
     	//setControlPoint();
@@ -90,7 +83,6 @@ public class Initials extends JPanel{
         return points;
     }
     
-    // Заполнение массива контрольных точек
      public void setControlPointA1() {
     	controlPoints.clear();
     	controlPoints.add(new Point(116, 63));
@@ -236,7 +228,6 @@ public class Initials extends JPanel{
 	    controlPoints.add(new Point(204, 462)); 
     }
    
-	// Вычисление точек кривой Безье
 	private Point calculateBezierPoint(float t, Point[] points) {
 		float u = 1 - t;
 		float tt = t * t;
@@ -266,7 +257,7 @@ public class Initials extends JPanel{
 
 	public static void main(String[] args) {
 		Initials sk = new Initials();
-		sk.repaint(); // перерисовка jframe
+		sk.repaint(); 
 	}
 }	
 
